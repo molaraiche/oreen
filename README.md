@@ -1,4 +1,4 @@
-![OREEN](./ss.png "OREEN Screenshot")
+![OREEN](./oreen.png "OREEN Screenshot")
 ![OREEN-DESIGN](./design.png "OREEN DESIGN")
 
 # OREEN
