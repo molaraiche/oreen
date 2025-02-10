@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className='container mx-auto px-4'>
           <Navbar />
         </header>
-        <main className='container mx-auto px-4'>{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

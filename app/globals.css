@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+.bg {
+  background: url('../public/assets/map.png') no-repeat right/contain;
+  height: 80vh;
+}
 
 @layer base {
   :root {
