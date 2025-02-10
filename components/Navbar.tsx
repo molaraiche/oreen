@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <div
         className={`absolute right-0 flex flex-col top-[10vh] items-center gap-10 h-[80vh] bg-red-3 justify-center w-full md:static md:flex-row md:bg-transparent md:gap-8 md:justify-start md:w-fit -translate-x-[200%] md:translate-x-[0%] ease-in-out duration-300 ${
-          menu ? "-translate-x-[200%]" : "translate-x-[0]"
+          menu ? "translate-x-[0]" : "-translate-x-[200%]"
         } `}>
         {navlinks.map((link: linksType) => (
           <Link
@@ -35,12 +35,12 @@ const Navbar = () => {
       </div>
       <div className='block md:hidden'>
         {menu ? (
-          <HiOutlineMenuAlt2
+          <IoMdClose
             className='w-8 h-8 text-red-5 cursor-pointer'
             onClick={menuHandler}
           />
         ) : (
-          <IoMdClose
+          <HiOutlineMenuAlt2
             className='w-8 h-8 text-red-5 cursor-pointer'
             onClick={menuHandler}
           />
