@@ -6,7 +6,7 @@ export const navlinks = [
   },
   {
     id: 2,
-    path: "cars",
+    path: "#cars",
     label: "Cars",
   },
 

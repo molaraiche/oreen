@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 .bg {
   background: url('../public/assets/map.png') no-repeat right/contain;
   height: 80vh;

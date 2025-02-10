@@ -3,3 +3,10 @@ export interface linksType {
   path: string;
   label: string;
 }
+export interface partnerType {
+  id: number;
+  name: string;
+  image: string;
+  width: number;
+  height: number;
+}

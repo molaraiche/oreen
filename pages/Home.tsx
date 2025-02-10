@@ -1,3 +1,4 @@
+import ScrollTo from "@/components/ScrollTo";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -30,6 +31,7 @@ const Home = () => {
           className='w-full h-auto'
         />
       </div>
+      <ScrollTo path='#cars' />
     </div>
   );
 };
