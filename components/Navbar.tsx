@@ -28,7 +28,7 @@ const Navbar = () => {
           <Link
             href={link.path}
             key={link.id}
-            className='text-netral-9  font-bold font-lato leading-[18px] text-4xl md:text-[15px]'>
+            className='text-netral-9  font-bold font-lato leading-[18px] text-4xl md:text-[15px] hover:text-red-4 ease-in duration-200'>
             {link.label}
           </Link>
         ))}

@@ -10,3 +10,10 @@ export interface partnerType {
   width: number;
   height: number;
 }
+export interface carCardType {
+  id?: number;
+  image: string;
+  name: string;
+  price: number;
+  review: number;
+}
