@@ -33,8 +33,10 @@ const Cars = () => {
           />
         ))}
       </div>
-      <div className=''>
-        <Link href='/cars' className='px-6 py-2.5 bg-red-5 text-netral-1'>
+      <div className='mb-20'>
+        <Link
+          href='/cars'
+          className='px-6 py-2.5 bg-red-5 text-netral-1 font-medium font-montserrat'>
           See All
         </Link>
       </div>

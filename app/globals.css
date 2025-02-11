@@ -18,6 +18,36 @@ body {
   height: 80vh;
 }
 
+.bg-services {
+  background: url('../public/assets/service-bg.png') no-repeat center/cover;
+  height: 100vh;
+}
+
+.bg-filter {
+  background: rgba(254, 245, 245, .9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+/* services type */
+#rent {
+  background: url("../public/assets/instans-rent.png");
+}
+
+#driver {
+  background: url("../public/assets/private-driver.png");
+
+}
+
+#trip {
+  background: url("../public/assets/long-trip.png");
+
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;

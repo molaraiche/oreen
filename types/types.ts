@@ -17,3 +17,12 @@ export interface carCardType {
   price: number;
   review: number;
 }
+export interface serviceCardType {
+  type: string;
+  image: string;
+  name: string;
+  width: number;
+  height: number;
+  description: string;
+
+}

@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const Partners = () => {
   return (
-    <div className=''>
+    <div className='my-24'>
       <div className=''>
         <h1 className='text-4xl text-netral-7 font-bold font-lato text-center'>
           Our Partners
         </h1>
       </div>
-      <div className='flex items-center justify-center gap-20 my-20 flex-wrap'>
+      <div className='flex items-center justify-center gap-20  flex-wrap mt-10'>
         {partnersList.map((partner) => (
           <div className='' key={partner.id}>
             <Image
