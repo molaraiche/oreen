@@ -1,6 +1,9 @@
+"use client";
 import { serviceCardType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
+AOS.init();
 
 const ServiceCard = ({
   type,
@@ -13,7 +16,8 @@ const ServiceCard = ({
   return (
     <div
       id={type}
-      className={`w-[400px] h-[501px] flex flex-col items-center justify-center border-b-[5px] hover:border-red-5 border-netral-7 ease-in-out duration-300 cursor-pointer hover:scale-110 my-5 lg:my-0`}>
+      className={`w-[400px] h-[501px] flex flex-col items-center justify-center border-b-[5px] hover:border-red-5 border-netral-7 ease-in-out duration-300 cursor-pointer hover:scale-110 my-5 lg:my-0`}
+      data-aos='flip-down'>
       <div className='flex items-center justify-center flex-col gap-3'>
         <Image
           src={image}

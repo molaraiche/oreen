@@ -3,6 +3,7 @@ import { Lato, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "animate.css";
+import "aos/dist/aos.css";
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
