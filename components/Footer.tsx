@@ -4,7 +4,7 @@ import BackTop from "./BackTop";
 
 const Footer = () => {
   return (
-    <div className='flex items-center justify-between font-montserrat my-32 relative flex-col-reverse gap-y-10 md:flex-row md gap-10'>
+    <div className='flex items-center justify-between font-montserrat my-32 relative flex-col-reverse gap-y-10 md:flex-row  md:gap-10'>
       <div className='flex flex-col'>
         <Image
           src='/assets/logo.svg'
@@ -48,7 +48,7 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className='flex md:hidden justify-between items-center w-full '>
+      <div className='flex md:hidden justify-between items-center w-full gap-2'>
         <div className='flex flex-col h-[260px]'>
           <h4 className='text-2xl text-netral-7 font-bold'> Company </h4>
           <div className='flex flex-col mt-5'>
