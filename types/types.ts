@@ -31,3 +31,10 @@ export interface advantageCardType {
   name: string;
   description: string;
 }
+export interface testimonialCardType {
+  id?: number;
+  image: string;
+  name: string;
+  location: string;
+  review: number;
+}

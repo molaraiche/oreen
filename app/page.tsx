@@ -3,6 +3,7 @@ import Cars from "@/pages/Cars";
 import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
+import Testimonials from "@/pages/Testimonials";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
       </section>
       <section className='container mx-auto px-4'>
         <Contact />
+      </section>
+      <section className='container mx-auto px-4'>
+        <Testimonials />
       </section>
     </>
   );
