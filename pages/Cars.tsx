@@ -13,10 +13,10 @@ const Cars = () => {
       <div className='text-center'>
         <div className='font-lato'>
           <h4 className='text-red-3 text-xl font-bold '>POPULAR CAR</h4>
-          <h2 className='text-4xl text-netral-7 font-bold font-lato text-center'>
+          <h2 className='text-4xl text-netral-7 font-bold font-lato text-center py-2.5'>
             Choose Your Suitable Car
           </h2>
-          <p className='text-netral-5'>
+          <p className='text-netral-5 p-2.5'>
             We present popular cars that are rented by customers to maximize
             your comfort on long trips.
           </p>

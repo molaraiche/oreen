@@ -24,5 +24,10 @@ export interface serviceCardType {
   width: number;
   height: number;
   description: string;
-
+}
+export interface advantageCardType {
+  id?: number;
+  image: string;
+  name: string;
+  description: string;
 }
