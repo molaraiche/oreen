@@ -4,7 +4,7 @@ import BackTop from "./BackTop";
 
 const Footer = () => {
   return (
-    <div className='flex items-center justify-between font-montserrat my-32 relative'>
+    <div className='flex items-center justify-between font-montserrat my-32 relative flex-col-reverse gap-y-10 md:flex-row md gap-10'>
       <div className='flex flex-col'>
         <Image
           src='/assets/logo.svg'
@@ -48,79 +48,158 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className='flex flex-col h-[260px]'>
-        <h4 className='text-2xl text-netral-7 font-bold'> Company </h4>
-        <div className='flex flex-col mt-5'>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            About US
-          </Link>
-          <Link
-            href='#services'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Services
-          </Link>
-          <Link
-            href='#cars'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Cars
-          </Link>
-          <Link
-            href='#partners'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Our Partners
-          </Link>
+      <div className='flex md:hidden justify-between items-center w-full '>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Company </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              About US
+            </Link>
+            <Link
+              href='#services'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Services
+            </Link>
+            <Link
+              href='#cars'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Cars
+            </Link>
+            <Link
+              href='#partners'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Our Partners
+            </Link>
+          </div>
+        </div>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Services </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Instant Rent
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Private Driver
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Long Trip
+            </Link>
+          </div>
+        </div>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Support </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Blog
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              FAQ
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Call Center
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Partner With Us
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Terms & Condition
+            </Link>
+          </div>
         </div>
       </div>
-      <div className='flex flex-col h-[260px]'>
-        <h4 className='text-2xl text-netral-7 font-bold'> Services </h4>
-        <div className='flex flex-col mt-5'>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Instant Rent
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Private Driver
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Long Trip
-          </Link>
+      <div className='hidden md:flex justify-between w-full'>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Company </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              About US
+            </Link>
+            <Link
+              href='#services'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Services
+            </Link>
+            <Link
+              href='#cars'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Cars
+            </Link>
+            <Link
+              href='#partners'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Our Partners
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className='flex flex-col h-[260px]'>
-        <h4 className='text-2xl text-netral-7 font-bold'> Support </h4>
-        <div className='flex flex-col mt-5'>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Blog
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            FAQ
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Call Center
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Partner With Us
-          </Link>
-          <Link
-            href='#'
-            className='p-2.5 hover:text-red-5 ease-in duration-200'>
-            Terms & Condition
-          </Link>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Services </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Instant Rent
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Private Driver
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Long Trip
+            </Link>
+          </div>
+        </div>
+        <div className='flex flex-col h-[260px]'>
+          <h4 className='text-2xl text-netral-7 font-bold'> Support </h4>
+          <div className='flex flex-col mt-5'>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Blog
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              FAQ
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Call Center
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Partner With Us
+            </Link>
+            <Link
+              href='#'
+              className='p-2.5 hover:text-red-5 ease-in duration-200'>
+              Terms & Condition
+            </Link>
+          </div>
         </div>
       </div>
       <div className='flex items-center justify-center'>
