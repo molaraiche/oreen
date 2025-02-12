@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Contact = () => {
   return (
-    <div className='flex justify-center w-full items-center my-20 flex-col md:flex-row gap-y-10 md:gap-y-0'>
+    <div
+      id='contact'
+      className='flex justify-center w-full items-center my-20 flex-col md:flex-row gap-y-10 md:gap-y-0'>
       <div className='flex flex-col'>
         <div className=''>
           <div className='font-lato'>
@@ -112,9 +114,12 @@ const Contact = () => {
           height={447}
         />
         <div className='mt-16'>
-          <Button className='py-2.5 px-6 bg-red-5 text-netral-1 shadow-softRed'>
+          <Link
+            href='https://www.google.com/maps'
+            target='_blank'
+            className='py-2.5 px-6 bg-red-5 text-netral-1 shadow-softRed'>
             <span className='p-2.5'>Office Center Map</span>
-          </Button>
+          </Link>
         </div>
       </div>
     </div>

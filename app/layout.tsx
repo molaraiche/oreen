@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "animate.css";
 import "aos/dist/aos.css";
+import Footer from "@/components/Footer";
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
@@ -34,6 +35,11 @@ export default function RootLayout({
           <Navbar />
         </header>
         <main>{children}</main>
+        <footer className='border-b-[25px] border-red-5'>
+          <div className='container mx-auto px-4'>
+            <Footer />
+          </div>
+        </footer>
       </body>
     </html>
   );

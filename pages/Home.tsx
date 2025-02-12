@@ -4,7 +4,9 @@ import Image from "next/image";
 
 const Home = () => {
   return (
-    <div className=' flex items-center justify-center h-[80vh] flex-col md:flex-row gap-10 md:gap-0 my-[6rem] md:my-0'>
+    <div
+      id='about'
+      className=' flex items-center justify-center h-[80vh] flex-col md:flex-row gap-10 md:gap-0 my-[6rem] md:my-0'>
       <div className=' w-full md:w-1/2'>
         <h1 className='text-[56px] font-lato font-bold text-netral-8 leading-[67px] my-2.5'>
           We Have Prepared a Car For Your Trip

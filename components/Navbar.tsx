@@ -12,14 +12,14 @@ const Navbar = () => {
   const menuHandler = () => setMenu(!menu);
   return (
     <nav className='flex h-[10vh] items-center justify-between'>
-      <div className=''>
+      <Link href='/' className=''>
         <Image
           src='/assets/logo.svg'
           alt='Oreen logo'
           width={93.6}
           height={25}
         />
-      </div>
+      </Link>
       <div
         className={`absolute right-0 flex flex-col top-[10vh] items-center gap-10 h-[80vh] bg-red-3 justify-center w-full md:static md:flex-row md:bg-transparent md:gap-8 md:justify-start md:w-fit -translate-x-[200%] md:translate-x-[0%] ease-in-out duration-300 z-10 ${
           menu ? "translate-x-[0]" : "-translate-x-[200%]"

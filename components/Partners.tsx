@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Partners = () => {
   return (
-    <div className='my-24'>
+    <div className='my-24' id='partners'>
       <div className=''>
         <h1 className='text-4xl text-netral-7 font-bold font-lato text-center'>
           Our Partners
