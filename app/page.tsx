@@ -2,6 +2,7 @@ import Advantages from "@/pages/Advantages";
 import Cars from "@/pages/Cars";
 import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
+import Newsletter from "@/pages/Newsletter";
 import Services from "@/pages/Services";
 import Testimonials from "@/pages/Testimonials";
 
@@ -30,6 +31,11 @@ const App = () => {
       <section className='container mx-auto px-4'>
         <Testimonials />
       </section>
+      <div className='bg-red-2'>
+        <section className='container mx-auto px-4'>
+          <Newsletter />
+        </section>
+      </div>
     </>
   );
 };
