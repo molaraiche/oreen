@@ -4,7 +4,6 @@ import { serviceCardType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
-AOS.init();
 
 const ServiceCard = ({
   type,
