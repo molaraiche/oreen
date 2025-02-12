@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { serviceCardType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,11 @@ const ServiceCard = ({
   height,
   description,
 }: serviceCardType) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      AOS.init();
+    }
+  }, []);
   return (
     <div
       id={type}
