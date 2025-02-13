@@ -53,7 +53,7 @@ const Support = () => {
               setModal(false);
             }
           }}
-          className='bg-red-4 h-[400px] w-[450px] '>
+          className='bg-red-4 h-[350px] md:h-[400px] w-full md:w-[450px] mx-14 md:mx-0'>
           <div className='h-[50px] flex items-center justify-end px-4'>
             <IoMdClose
               className='w-6 h-6 cursor-pointer'

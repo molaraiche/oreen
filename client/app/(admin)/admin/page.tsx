@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const Admin = () => {
   return (
-    <section className=' font-montserrat flex items-center justify-between relative'>
-      <div className='adminbg'></div>
-      <div className='w-[55%]  flex items-center justify-center h-[100vh] flex-col'>
+    <section className=' font-montserrat flex items-center justify-between relative flex-col md:flex-row '>
+      <div className='adminbg w-full md:w-[45%] h-[20vh] md:h-[100vh]'></div>
+      <div className='w-full md:w-[55%] flex items-center justify-center h-[80vh] md:h-[100vh] flex-col'>
         <div className='text-center h-[20vh]'>
           <div className='flex items-center justify-center h-[10vh]'>
             <Image
@@ -33,7 +33,7 @@ const Admin = () => {
               </label>
               <input
                 type='text'
-                className='py-2.5 w-[400px] pl-2 placeholder:text-netral-3 ring-1 ring-netral-7 outline-none focus:ring-red-7 focus:ring-2'
+                className='py-2.5 w-full md:w-[400px] pl-2 placeholder:text-netral-3 ring-1 ring-netral-7 outline-none focus:ring-red-7 focus:ring-2'
                 placeholder='admin@example.com'
                 id='email'
                 name='email'
@@ -47,7 +47,7 @@ const Admin = () => {
               </label>
               <input
                 type='text'
-                className='py-2.5 w-[400px] pl-2 placeholder:text-netral-3 ring-1 ring-netral-7 outline-none focus:ring-red-7 focus:ring-2'
+                className='py-2.5 w-full md:w-[400px] pl-2 placeholder:text-netral-3 ring-1 ring-netral-7 outline-none focus:ring-red-7 focus:ring-2'
                 placeholder='Password'
                 id='password'
                 name='password'

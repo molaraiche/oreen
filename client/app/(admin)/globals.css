@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 .adminbg {
-  background: url("../../public/assets/service-bg.png") no-repeat fixed left/contain;
-  width: 45%;
-  height: 100vh;
+  background: url("../../public/assets/service-bg.png") no-repeat scroll left/cover;
+
 }
