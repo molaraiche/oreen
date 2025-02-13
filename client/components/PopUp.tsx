@@ -10,7 +10,7 @@ const Support = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [passwordCopied, setPasswordCopied] = useState(false);
   const fakeEmail = "admin@oreen.com";
-  const fakePassword = "admin123";
+  const fakePassword = "oreenAdmin@123";
 
   const modalToggle = () => setModal(!modal);
   const handleCopy = async (copiedElement: string) => {
