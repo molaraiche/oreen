@@ -1,0 +1,27 @@
+{
+  "pages": {
+    "/(admin)/admin/page": [
+      "static/chunks/_22d2ba._.js",
+      "static/chunks/app_favicon_ico_mjs_53e3fe._.js",
+      "static/chunks/_34b3b3._.css",
+      "static/chunks/app_(admin)_layout_tsx_a78255._.js",
+      "static/chunks/app_(admin)_layout_tsx_61af54._.js",
+      "static/chunks/node_modules_next_0766a2._.js",
+      "static/chunks/node_modules_react-icons_fa6_index_mjs_00e856._.js",
+      "static/chunks/node_modules_react-icons_io_index_mjs_d35cf4._.js",
+      "static/chunks/node_modules_react-icons_tb_index_mjs_f6a992._.js",
+      "static/chunks/node_modules_react-icons_lib_74ccc9._.js",
+      "static/chunks/node_modules_9cc564._.js",
+      "static/chunks/_bb0a39._.js",
+      "static/chunks/app_(admin)_admin_page_tsx_bd7362._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_523921._.js",
+      "static/chunks/node_modules_next_dist_4bb10e._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_d0a96d._.js",
+      "static/chunks/_e69f0d._.js",
+      "static/chunks/_d95469._.js"
+    ]
+  }
+}

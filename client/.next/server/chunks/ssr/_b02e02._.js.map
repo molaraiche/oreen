@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://D%3A/Desktop/projects/oreen/client/app/%28admin%29/admin/page.tsx"],"sourcesContent":["\r\nimport Image from \"next/image\";\r\nimport { useForm } from \"react-hook-form\";\r\nconst Admin = () => {\r\n  return (\r\n    <section className=' font-montserrat flex items-center justify-between'>\r\n      <div className='adminbg'></div>\r\n      <div className='w-[55%] bg-red-100 flex items-center justify-center h-[100vh]'>\r\n        <div className='text-center'>\r\n          <div className='flex items-center justify-center h-[10vh]'>\r\n            <Image\r\n              src='./assets/logo.svg'\r\n              alt='OREEN LOGO'\r\n              width={200}\r\n              height={40}\r\n            />\r\n          </div>\r\n          <div className='font-lato'>\r\n            <h2 className='text-4xl text-netral-7 font-bold font-lato text-center py-2.5'>\r\n              Admin Dashboard Login\r\n            </h2>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n\r\nexport default Admin;\r\n\r\n{\r\n}\r\n"],"names":[],"mappings":";;;;AACA;;;AAEA,MAAM,QAAQ;IACZ,qBACE,8OAAC;QAAQ,WAAU;;0BACjB,8OAAC;gBAAI,WAAU;;;;;;0BACf,8OAAC;gBAAI,WAAU;0BACb,cAAA,8OAAC;oBAAI,WAAU;;sCACb,8OAAC;4BAAI,WAAU;sCACb,cAAA,8OAAC,6HAAA,CAAA,UAAK;gCACJ,KAAI;gCACJ,KAAI;gCACJ,OAAO;gCACP,QAAQ;;;;;;;;;;;sCAGZ,8OAAC;4BAAI,WAAU;sCACb,cAAA,8OAAC;gCAAG,WAAU;0CAAgE;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAS1F;uCAEe;AAEf,CACA"}},
+    {"offset": {"line": 81, "column": 2}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 92, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 92, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

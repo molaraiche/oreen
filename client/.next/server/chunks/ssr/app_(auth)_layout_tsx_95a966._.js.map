@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://D%3A/Desktop/projects/oreen/client/app/%28auth%29/layout.tsx"],"sourcesContent":["export default function RootLayout({\r\n  children,\r\n}: Readonly<{\r\n  children: React.ReactNode;\r\n}>) {\r\n  return <main>{children}</main>;\r\n}\r\n"],"names":[],"mappings":";;;;;AAAe,SAAS,WAAW,EACjC,QAAQ,EAGR;IACA,qBAAO,8OAAC;kBAAM;;;;;;AAChB"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
