@@ -6,7 +6,7 @@ require("dotenv").config();
 connectDB();
 
 // const projectsRouter = require("./routes/projects");
-// const blogsRouter = require("./routes/blogs");
+const commentRouter = require("./routes/commentRoute");
 const adminRouter = require("./routes/adminRoute");
 // const contactRouter = require("./routes/contact");
 
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // app.use("/api/projects", projectsRouter);
-// app.use("/api/blogs", blogsRouter);
+app.use("/api/comments", commentRouter);
 app.use("/api/admin", adminRouter);
 // app.use("/api/contact", contactRouter);
 
