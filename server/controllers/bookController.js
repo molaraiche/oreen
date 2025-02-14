@@ -1,4 +1,28 @@
 const Booking = require("../model/bookModel");
+const twilio = require("twilio");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = new twilio(accountSid, authToken);
+
+const sendWhatsAppNotification = async (phone, status) => {
+  try {
+    const message =
+      status === "approved"
+        ? "لقد تم قبول طلبكم لكراء السيارة رقم 8 المرجو الاتصال بينا في مدة زمنية اقل من 4 ساعات"
+        : "Your booking request has been rejected. Please contact us for more details.";
+
+    const response = await client.messages.create({
+      from: "whatsapp:+14155238886",
+      to: `whatsapp:${phone}`,
+      body: message,
+    });
+
+    console.log("WhatsApp message sent:", response.sid);
+  } catch (error) {
+    console.error("Error sending WhatsApp message:", error);
+  }
+};
 
 const showBooks = async (req, res) => {
   try {
@@ -46,26 +70,24 @@ const demandBook = async (req, res) => {
     });
   }
 };
-
 const updateBookingStatus = async (req, res) => {
   try {
     const id = req.params.id;
     const { status } = req.body;
-
     if (!["approved", "rejected"].includes(status)) {
       return res.status(400).json({ message: "Invalid status value" });
     }
-
     const booking = await Booking.findByIdAndUpdate(
       id,
       { status },
       { new: true }
     );
-
     if (!booking) {
       return res.status(404).json({ message: "Booking not found" });
     }
-
+    if (status === "approved") {
+      await sendWhatsAppNotification(booking.phone, status);
+    }
     res.json({ message: `Booking ${status}`, booking });
   } catch (error) {
     res.status(500).json({
