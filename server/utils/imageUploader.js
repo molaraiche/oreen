@@ -11,11 +11,10 @@ cloudinary.config({
 const cloudinaryStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "images",
+    folder: "images", // Folder in Cloudinary where files will be stored
     format: async (req, file) => {
-      const validFormats = ["jpg", "png", "webp", "svg"];
       const ext = file.mimetype.split("/")[1];
-      return validFormats.includes(ext) ? ext : "jpg";
+      return ext; // Use the actual file extension for images and videos
     },
     public_id: (req, file) => `${Date.now()}-${file.originalname}`,
   },
@@ -24,19 +23,14 @@ const cloudinaryStorage = new CloudinaryStorage({
 const upload = multer({
   storage: cloudinaryStorage,
   fileFilter: (req, file, cb) => {
-    const allowedMimeTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-      "image/svg+xml",
-    ];
-    if (allowedMimeTypes.includes(file.mimetype)) {
+    // Accept any image or video file
+    if (
+      file.mimetype.startsWith("image/") ||
+      file.mimetype.startsWith("video/")
+    ) {
       cb(null, true);
     } else {
-      cb(
-        new Error("Only .jpg, .png, .webp, and .svg formats are allowed!"),
-        false
-      );
+      cb(new Error("Only image and video formats are allowed!"), false);
     }
   },
 });

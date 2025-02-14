@@ -10,9 +10,9 @@ const carsSchema = new mongoose.Schema(
       url: { type: String, required: true },
       public_id: { type: String, required: true },
     },
-    SecondaryImages: {
-      url: { type: String, required: true },
-      public_id: { type: String, required: true },
+    secondaryImages: {
+      url: { type: String },
+      public_id: { type: String },
     },
     description: {
       type: String,

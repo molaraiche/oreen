@@ -8,7 +8,7 @@ connectDB();
 const bookingRouter = require("./routes/bookRoute");
 const commentRouter = require("./routes/commentRoute");
 const adminRouter = require("./routes/adminRoute");
-// const contactRouter = require("./routes/contact");
+const carsRouter = require("./routes/carsRoute");
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(cors());
 app.use("/api/booking", bookingRouter);
 app.use("/api/comments", commentRouter);
 app.use("/api/admin", adminRouter);
-// app.use("/api/contact", contactRouter);
+app.use("/api/cars", carsRouter);
 
 const PORT = process.env.PORT || 5000;
 
