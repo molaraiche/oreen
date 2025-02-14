@@ -65,7 +65,7 @@ const Support = () => {
               <input
                 type='text'
                 className='w-full my-2 px-2 h-10 bg-red-1 outline-none cursor-pointer'
-                value={"admin@oreen.com"}
+                value={fakeEmail}
                 readOnly
                 onClick={() => handleCopy(fakeEmail)}
               />
@@ -80,7 +80,7 @@ const Support = () => {
                 type='text'
                 className='w-full my-2 px-2 h-10 bg-red-1 outline-none cursor-pointer'
                 readOnly
-                value={"admin123"}
+                value={fakePassword}
                 onClick={() => handleCopy(fakePassword)}
               />
               {passwordCopied ? (

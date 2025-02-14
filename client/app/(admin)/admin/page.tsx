@@ -1,9 +1,35 @@
 "use client";
 import Support from "@/components/PopUp";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import Image from "next/image";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Admin = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const loginHandler = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/admin/login",
+        { email, password }
+      );
+      const { token } = await response.data;
+      Cookies.set("token", token, {
+        expires: 30,
+        secure: true,
+        sameSite: "Strict",
+      });
+      router.push("/dashboard");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
   return (
     <section className=' font-montserrat flex items-center justify-between relative flex-col md:flex-row '>
       <div className='adminbg w-full md:w-[45%] h-[20vh] md:h-[100vh]'></div>
@@ -24,7 +50,7 @@ const Admin = () => {
           </div>
         </div>
         <div className='h-[40vh]'>
-          <form className=' flex gap-y-4 flex-col'>
+          <form className=' flex gap-y-4 flex-col' onSubmit={loginHandler}>
             <div className='flex flex-col'>
               <label
                 htmlFor='email'
@@ -37,6 +63,8 @@ const Admin = () => {
                 placeholder='admin@example.com'
                 id='email'
                 name='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className='flex flex-col'>
@@ -46,11 +74,13 @@ const Admin = () => {
                 Password
               </label>
               <input
-                type='text'
+                type='password'
                 className='py-2.5 w-full md:w-[400px] pl-2 placeholder:text-netral-3 ring-1 ring-netral-7 outline-none focus:ring-red-7 focus:ring-2'
                 placeholder='Password'
                 id='password'
                 name='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className='flex items-center justify-center'>
