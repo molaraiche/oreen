@@ -3,7 +3,7 @@ const cloudinary = require("cloudinary").v2;
 const showComment = async (req, res) => {
   try {
     const response = await Comment.find().exec();
-    res.status(200).json({ Comment: response });
+    res.status(200).json({ Comments: response });
   } catch (error) {
     res.status(500).json({
       message: "There is an error in Comments fetching",

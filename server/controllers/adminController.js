@@ -35,41 +35,40 @@ const CreateToken = (id) => {
 // };
 const login = async (req, res) => {
   const { email, password } = req.body;
+
   if (!email || !password) {
-    res.status(400).json({
-      message: "please fill all the fields with the correct Data !",
-    });
+    return res
+      .status(400)
+      .json({ message: "Please fill all the fields with correct data!" });
   }
+
   try {
     if (!validator.isEmail(email) || !validator.isStrongPassword(password)) {
-      res.status(400).json({ message: "Please add correct format !" });
-    } else {
-      const existUser = await Admin.findOne({ email });
-      if (existUser) {
-        const matchedPassword = bcrypt.compareSync(
-          password,
-          existUser.password
-        );
-        if (matchedPassword) {
-          const token = CreateToken(existUser._id);
-
-          res.status(200).json({ message: "Login !!", token });
-        } else {
-          res.json({
-            message:
-              "user Does not exist or password is incorrect ! Please try check your credential informations! ",
-          });
-        }
-      } else {
-        res.json({
-          message:
-            "user Does not exist or password is incorrect ! Please try check your credential informati",
-        });
-      }
+      return res
+        .status(400)
+        .json({ message: "Please enter a valid email and strong password!" });
     }
+
+    const existUser = await Admin.findOne({ email });
+    if (!existUser) {
+      return res
+        .status(400)
+        .json({ message: "User does not exist or password is incorrect!" });
+    }
+
+    const matchedPassword = bcrypt.compareSync(password, existUser.password);
+    if (!matchedPassword) {
+      return res
+        .status(400)
+        .json({ message: "User does not exist or password is incorrect!" });
+    }
+
+    const token = CreateToken(existUser._id);
+
+    res.status(200).json({ message: "Login successful!", token });
   } catch (error) {
-    res.status(500).json({ message: error.message });
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ message: "Server error, please try again later." });
   }
 };
 
