@@ -1,4 +1,5 @@
 const Cars = require("../model/carsModel");
+const cloudinary = require("cloudinary").v2;
 
 const getAllCars = async (req, res) => {
   try {
@@ -11,9 +12,17 @@ const getAllCars = async (req, res) => {
     });
   }
 };
+
 const addCar = async (req, res) => {
   try {
+    // Log received data
+    console.log("Received files:", req.files);
+    console.log("Received body:", req.body);
+
+    // Extract fields from req.body
     const { name, description, brand, model, rate, type, condition } = req.body;
+
+    // Validate required text fields
     if (
       !name ||
       !description ||
@@ -25,25 +34,37 @@ const addCar = async (req, res) => {
     ) {
       return res.status(400).json({ message: "All fields are required!" });
     }
-    const mainImage = req.files?.mainImage
+
+    // Ensure req.files is defined
+    const files = req.files || {};
+
+    // Process mainImage
+    const mainImageFile = files.mainImage ? files.mainImage[0] : null;
+    if (!mainImageFile) {
+      return res.status(400).json({ message: "Main image is required!" });
+    }
+    const mainImage = {
+      url: mainImageFile.path,
+      public_id: mainImageFile.filename,
+    };
+
+    // Process secondaryImages
+    const secondaryImageFiles = files.secondaryImages || [];
+    const secondaryImages = secondaryImageFiles.map((file) => ({
+      url: file.path,
+      public_id: file.filename,
+    }));
+
+    // Process video (optional)
+    const videoFile = files.video ? files.video[0] : null;
+    const video = videoFile
       ? {
-          url: req.files.mainImage[0].path,
-          public_id: req.files.mainImage[0].filename,
-        }
-      : null;
-    const secondaryImages = req.files?.secondaryImages
-      ? req.files.secondaryImages.map((file) => ({
-          url: file.path,
-          public_id: file.filename,
-        }))
-      : [];
-    const video = req.files?.video
-      ? {
-          url: req.files.video[0].path,
-          public_id: req.files.video[0].filename,
+          url: videoFile.path,
+          public_id: videoFile.filename,
         }
       : null;
 
+    // Create new car document
     const newCar = new Cars({
       name,
       description,
@@ -56,36 +77,189 @@ const addCar = async (req, res) => {
       secondaryImages,
       video,
     });
+    // Save to database
     const savedCar = await newCar.save();
+    // Respond to client
     res.status(201).json({
       message: "Car added successfully",
       car: savedCar,
     });
   } catch (error) {
+    console.error("Error adding car:", error);
     res.status(500).json({
-      message: "There is an error in Cars Adding",
+      message: "There was an error adding the car.",
       error: error.message,
     });
   }
 };
-// const carUpdate = async (req, res) => {
-//   try {
-//   } catch (error) {
-//     res.status(500).json({
-//       message: "There is an error in Cars Updating",
-//       error: error.message,
-//     });
-//   }
-// };
 
-// const carDelete = async (req, res) => {
-//   try {
-//   } catch (error) {
-//     res.status(500).json({
-//       message: "There is an error in Cars Deleting",
-//       error: error.message,
-//     });
-//   }
-// };
+const carUpdate = async (req, res) => {
+  try {
+    console.log("Received files:", req.files);
+    console.log("Received body:", req.body);
 
-module.exports = { getAllCars, addCar };
+    const id = req.params.id;
+    const files = req.files || {};
+    const { name, description, brand, model, rate, type, condition } = req.body;
+
+    // Fetch the existing car data
+    const existingCar = await Cars.findById(id);
+    if (!existingCar) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+
+    // Initialize update fields
+    const updateFields = {
+      name,
+      description,
+      brand,
+      model,
+      rate,
+      type,
+      condition,
+    };
+
+    const deleteMediaPromises = [];
+
+    // Handle mainImage
+    let mainImage = existingCar.mainImage;
+    const mainImageFile = files.mainImage ? files.mainImage[0] : null;
+    if (mainImageFile) {
+      // Delete old mainImage from Cloudinary
+      if (existingCar.mainImage && existingCar.mainImage.public_id) {
+        deleteMediaPromises.push(
+          cloudinary.uploader.destroy(existingCar.mainImage.public_id)
+        );
+      }
+      // Set new mainImage
+      mainImage = {
+        url: mainImageFile.path,
+        public_id: mainImageFile.filename,
+      };
+      updateFields.mainImage = mainImage;
+    }
+
+    // Handle secondaryImages
+    let secondaryImages = existingCar.secondaryImages || [];
+    const secondaryImageFiles = files.secondaryImages || [];
+    if (secondaryImageFiles.length > 0) {
+      // Delete old secondaryImages from Cloudinary
+      if (Array.isArray(existingCar.secondaryImages)) {
+        existingCar.secondaryImages.forEach((image) => {
+          if (image.public_id) {
+            deleteMediaPromises.push(
+              cloudinary.uploader.destroy(image.public_id)
+            );
+          }
+        });
+      }
+      // Set new secondaryImages
+      secondaryImages = secondaryImageFiles.map((file) => ({
+        url: file.path,
+        public_id: file.filename,
+      }));
+      updateFields.secondaryImages = secondaryImages;
+    }
+
+    // Handle video (optional)
+    let video = existingCar.video;
+    const videoFile = files.video ? files.video[0] : null;
+    if (videoFile) {
+      // Delete old video from Cloudinary
+      if (existingCar.video && existingCar.video.public_id) {
+        deleteMediaPromises.push(
+          cloudinary.uploader.destroy(existingCar.video.public_id, {
+            resource_type: "video",
+          })
+        );
+      }
+      // Set new video
+      video = {
+        url: videoFile.path,
+        public_id: videoFile.filename,
+      };
+      updateFields.video = video;
+    }
+
+    // Wait for all old media to be deleted
+    await Promise.all(deleteMediaPromises);
+
+    // Update the car document
+    const updatedCar = await Cars.findByIdAndUpdate(id, updateFields, {
+      new: true,
+    });
+
+    res.status(200).json({
+      message: "Car updated successfully",
+      car: updatedCar,
+    });
+  } catch (error) {
+    console.error("Error updating Car:", error);
+    res.status(500).json({
+      message: "There is an error in Car Updating",
+      error: error.message,
+    });
+  }
+};
+
+const carDelete = async (req, res) => {
+  try {
+    const car = await Cars.findById(req.params.id);
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+    const imageDeletionPromises = [];
+    const deleteMedia = async (publicId, resourceType = "image") => {
+      try {
+        if (publicId) {
+          console.log(`Deleting Cloudinary ${resourceType}:`, publicId);
+          const result = await cloudinary.uploader.destroy(publicId, {
+            resource_type: resourceType,
+          });
+          console.log("Cloudinary response:", result);
+          if (result.result !== "ok") {
+            console.warn(`Failed to delete ${resourceType}:`, publicId);
+          }
+        }
+      } catch (error) {
+        console.error(
+          `Error deleting Cloudinary ${resourceType}:`,
+          publicId,
+          error.message
+        );
+      }
+    };
+
+    // Delete mainImage
+    if (car.mainImage?.public_id) {
+      imageDeletionPromises.push(deleteMedia(car.mainImage.public_id));
+    }
+    // Delete secondaryImages
+    if (Array.isArray(car.secondaryImages)) {
+      car.secondaryImages.forEach((image) => {
+        if (image.public_id) {
+          imageDeletionPromises.push(deleteMedia(image.public_id));
+        }
+      });
+    }
+    // Delete video
+    if (car.video?.public_id) {
+      imageDeletionPromises.push(deleteMedia(car.video.public_id, "video"));
+    }
+    // Wait for all image deletions to complete
+    await Promise.all(imageDeletionPromises);
+    // Delete the car document
+    await car.deleteOne();
+    res
+      .status(200)
+      .json({ message: "Car and associated media deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting Car:", error);
+    res.status(500).json({
+      message: "Error deleting Car",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { getAllCars, addCar, carUpdate, carDelete };

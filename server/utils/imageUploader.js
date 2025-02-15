@@ -1,6 +1,7 @@
 const multer = require("multer");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
+const path = require("path");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -10,24 +11,34 @@ cloudinary.config({
 
 const cloudinaryStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: "images", // Folder in Cloudinary where files will be stored
-    format: async (req, file) => {
-      const ext = file.mimetype.split("/")[1];
-      return ext; // Use the actual file extension for images and videos
-    },
-    public_id: (req, file) => `${Date.now()}-${file.originalname}`,
+  params: async (req, file) => {
+    const ext = path.extname(file.originalname).slice(1);
+    const allowedFormats = ["jpg", "jpeg", "png", "gif", "mp4", "avi"];
+
+    if (!allowedFormats.includes(ext.toLowerCase())) {
+      throw new Error("Unsupported file format.");
+    }
+
+    return {
+      folder: "images", // Folder in Cloudinary
+      format: ext,
+      public_id: `${Date.now()}-${file.originalname.split(".")[0]}`,
+      resource_type: file.mimetype.startsWith("video/") ? "video" : "image",
+    };
   },
 });
 
 const upload = multer({
   storage: cloudinaryStorage,
   fileFilter: (req, file, cb) => {
-    // Accept any image or video file
-    if (
-      file.mimetype.startsWith("image/") ||
-      file.mimetype.startsWith("video/")
-    ) {
+    const allowedMimes = [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "video/mp4",
+      "video/avi",
+    ];
+    if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
       cb(new Error("Only image and video formats are allowed!"), false);
