@@ -47,7 +47,6 @@ const Support = () => {
           modal ? "flex" : "hidden"
         }`}>
         <div
-          tabIndex={1}
           onKeyDown={(event) => {
             if (event.key === "Escape") {
               setModal(false);

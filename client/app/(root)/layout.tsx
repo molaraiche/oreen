@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={`${lato.variable} ${montserrat.variable} antialiased`}>
         <header className='container mx-auto px-4'>
           <Navbar />

@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logout from "./Logout";
+import { IoCarSportOutline } from "react-icons/io5";
+import { CiBookmark } from "react-icons/ci";
+import { ImStatsDots } from "react-icons/im";
 
 const SideBar = ({}) => {
   return (
     <aside
-      className={`bg-red-1 w-[20%] absolute h-screen right-0 left-0 ease-in-out duration-300 
+      className={`bg-red-1 w-[20%] ease-in-out duration-300 
       }`}>
       <div className='flex flex-col justify-between h-screen py-10 '>
         <div className='flex items-center justify-center w-full px-4 h-[10vh]'>
-          <Link href='/'>
+          <Link href='/dashboard'>
             <Image
               src='/assets/logo.svg'
               alt='Oreen logo'
@@ -18,21 +21,30 @@ const SideBar = ({}) => {
             />
           </Link>
         </div>
-        <div className='flex flex-col px-4'>
+        <div className='flex flex-col items-center md:items-start px-4'>
           <Link
             href='/dashboard/cars'
-            className='my-3 font-semibold hover:text-red-4'>
-            Manage Cars
+            className='my-3 font-semibold hover:text-red-4 flex items-center gap-2 '>
+            <span className=''>
+              <IoCarSportOutline className='w-6 h-6' />
+            </span>{" "}
+            <span className='hidden md:flex'>Manage Cars</span>
           </Link>
           <Link
             href='/dashboard/requests'
-            className='my-3 font-semibold hover:text-red-4'>
-            Booking Request
+            className='my-3 font-semibold hover:text-red-4 flex items-center gap-2 '>
+            <span className=''>
+              <CiBookmark className='w-6 h-6' />
+            </span>
+            <span className='hidden md:flex'> Booking Request</span>
           </Link>
           <Link
             href='/dashboard/stats'
-            className='my-3 font-semibold hover:text-red-4'>
-            Stats
+            className='my-3 font-semibold hover:text-red-4 flex items-center gap-2 '>
+            <span className=''>
+              <ImStatsDots className='w-6 h-6' />
+            </span>
+            <span className='hidden md:flex'> Stats</span>
           </Link>
         </div>
         <div className='flex items-center justify-center w-full'>

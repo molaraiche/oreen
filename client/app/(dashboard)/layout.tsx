@@ -3,6 +3,7 @@ import { Lato, Montserrat } from "next/font/google";
 import { Metadata } from "next";
 import "./globals.css";
 import "animate.css";
+import SideBar from "@/components/SideBar";
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
@@ -15,7 +16,7 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 export const metadata: Metadata = {
-  title: "Admin | OREEN - Car Rental Web Application",
+  title: "Dashboard | OREEN - Car Rental Web Application",
   description:
     "OREEN is a Car Rental web application provide high quality services and good cars with latest model for local rental",
 };
@@ -28,7 +29,10 @@ export default function AdminLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${lato.variable} ${montserrat.variable} antialiased`}>
-        <main>{children}</main>
+        <main className='flex'>
+          <SideBar />
+          <section className="w-[80%]">{children}</section>
+        </main>
       </body>
     </html>
   );

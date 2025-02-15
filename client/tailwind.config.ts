@@ -73,7 +73,6 @@ export default {
         lato: ["var(--font-lato), sans-serif"],
         montserrat: ["var(--font-montserrat), sans-serif"],
       },
-
       boxShadow: {
         carCardShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         softRed: "0px 0px 25px 0px rgba(180, 13, 13, 0.10)",

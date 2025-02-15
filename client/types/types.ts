@@ -38,3 +38,9 @@ export interface testimonialCardType {
   location: string;
   review: number;
 }
+export interface dashCardType {
+  id?: number;
+  image: string;
+  name: string;
+  path: string;
+}
