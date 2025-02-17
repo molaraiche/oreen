@@ -21,6 +21,12 @@ const carsSchema = new mongoose.Schema(
     rate: { type: Number, required: true },
     type: { type: String, required: true },
     condition: { type: String, required: true },
+    price: { type: Number, required: true },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
+    },
   },
   { timestamps: true }
 );

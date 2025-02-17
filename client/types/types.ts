@@ -44,3 +44,23 @@ export interface dashCardType {
   name: string;
   path: string;
 }
+
+export type imgProps = {
+  url: string;
+  public_id: string;
+};
+export interface carType {
+  id: number;
+  name: string;
+  mainImage?: imgProps;
+  secondaryImages?: imgProps[];
+  description?: string;
+  video?: imgProps;
+  price: number;
+  brand: string;
+  model: string;
+  rate?: number;
+  type?: string;
+  condition?: string;
+  situation?: string;
+}

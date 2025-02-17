@@ -20,11 +20,13 @@ const addCar = async (req, res) => {
     console.log("Received body:", req.body);
 
     // Extract fields from req.body
-    const { name, description, brand, model, rate, type, condition } = req.body;
+    const { name, description, brand, model, rate, type, condition, price } =
+      req.body;
 
     // Validate required text fields
     if (
       !name ||
+      !price ||
       !description ||
       !brand ||
       !model ||
@@ -69,6 +71,7 @@ const addCar = async (req, res) => {
       name,
       description,
       brand,
+      price,
       model,
       rate,
       type,
@@ -76,6 +79,7 @@ const addCar = async (req, res) => {
       mainImage,
       secondaryImages,
       video,
+      status: "Free",
     });
     // Save to database
     const savedCar = await newCar.save();
@@ -100,7 +104,8 @@ const carUpdate = async (req, res) => {
 
     const id = req.params.id;
     const files = req.files || {};
-    const { name, description, brand, model, rate, type, condition } = req.body;
+    const { name, description, brand, model, rate, type, condition, price } =
+      req.body;
 
     const existingCar = await Cars.findById(id);
     if (!existingCar) {
@@ -112,9 +117,11 @@ const carUpdate = async (req, res) => {
       description,
       brand,
       model,
+      price,
       rate,
       type,
       condition,
+      status: "Free",
     };
     const deleteMediaPromises = [];
     let mainImage = existingCar.mainImage;
