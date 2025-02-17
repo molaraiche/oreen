@@ -102,13 +102,11 @@ const carUpdate = async (req, res) => {
     const files = req.files || {};
     const { name, description, brand, model, rate, type, condition } = req.body;
 
-    // Fetch the existing car data
     const existingCar = await Cars.findById(id);
     if (!existingCar) {
       return res.status(404).json({ message: "Car not found" });
     }
 
-    // Initialize update fields
     const updateFields = {
       name,
       description,
@@ -118,32 +116,24 @@ const carUpdate = async (req, res) => {
       type,
       condition,
     };
-
     const deleteMediaPromises = [];
-
-    // Handle mainImage
     let mainImage = existingCar.mainImage;
     const mainImageFile = files.mainImage ? files.mainImage[0] : null;
     if (mainImageFile) {
-      // Delete old mainImage from Cloudinary
       if (existingCar.mainImage && existingCar.mainImage.public_id) {
         deleteMediaPromises.push(
           cloudinary.uploader.destroy(existingCar.mainImage.public_id)
         );
       }
-      // Set new mainImage
       mainImage = {
         url: mainImageFile.path,
         public_id: mainImageFile.filename,
       };
       updateFields.mainImage = mainImage;
     }
-
-    // Handle secondaryImages
     let secondaryImages = existingCar.secondaryImages || [];
     const secondaryImageFiles = files.secondaryImages || [];
     if (secondaryImageFiles.length > 0) {
-      // Delete old secondaryImages from Cloudinary
       if (Array.isArray(existingCar.secondaryImages)) {
         existingCar.secondaryImages.forEach((image) => {
           if (image.public_id) {
@@ -153,19 +143,15 @@ const carUpdate = async (req, res) => {
           }
         });
       }
-      // Set new secondaryImages
       secondaryImages = secondaryImageFiles.map((file) => ({
         url: file.path,
         public_id: file.filename,
       }));
       updateFields.secondaryImages = secondaryImages;
     }
-
-    // Handle video (optional)
     let video = existingCar.video;
     const videoFile = files.video ? files.video[0] : null;
     if (videoFile) {
-      // Delete old video from Cloudinary
       if (existingCar.video && existingCar.video.public_id) {
         deleteMediaPromises.push(
           cloudinary.uploader.destroy(existingCar.video.public_id, {
@@ -173,22 +159,16 @@ const carUpdate = async (req, res) => {
           })
         );
       }
-      // Set new video
       video = {
         url: videoFile.path,
         public_id: videoFile.filename,
       };
       updateFields.video = video;
     }
-
-    // Wait for all old media to be deleted
     await Promise.all(deleteMediaPromises);
-
-    // Update the car document
     const updatedCar = await Cars.findByIdAndUpdate(id, updateFields, {
       new: true,
     });
-
     res.status(200).json({
       message: "Car updated successfully",
       car: updatedCar,

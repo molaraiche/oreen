@@ -12,10 +12,10 @@ const carsSchema = new mongoose.Schema(
     secondaryImages: {
       type: [imageSchema],
       default: [],
-      required: true, // Marking as required
+      required: true,
     },
     description: { type: String, required: true },
-    video: { type: imageSchema }, // Assuming video is optional
+    video: { type: imageSchema },
     brand: { type: String, required: true },
     model: { type: String, required: true },
     rate: { type: Number, required: true },

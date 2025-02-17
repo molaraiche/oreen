@@ -20,7 +20,7 @@ const cloudinaryStorage = new CloudinaryStorage({
     }
 
     return {
-      folder: "images", // Folder in Cloudinary
+      folder: "images",
       format: ext,
       public_id: `${Date.now()}-${file.originalname.split(".")[0]}`,
       resource_type: file.mimetype.startsWith("video/") ? "video" : "image",
