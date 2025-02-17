@@ -79,7 +79,7 @@ const addCar = async (req, res) => {
       mainImage,
       secondaryImages,
       video,
-      status: "Free",
+      status: "free",
     });
     // Save to database
     const savedCar = await newCar.save();
@@ -121,7 +121,7 @@ const carUpdate = async (req, res) => {
       rate,
       type,
       condition,
-      status: "Free",
+      status: "free",
     };
     const deleteMediaPromises = [];
     let mainImage = existingCar.mainImage;
