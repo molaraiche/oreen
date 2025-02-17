@@ -16,10 +16,26 @@ const adminRouter = require("./routes/adminRoute");
 const carsRouter = require("./routes/carsRoute");
 
 const app = express();
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  allowedHeaders: "Content-Type, Authorization",
+};
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://oreen.molaraiche.com",
+];
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 app.use(limiter);
 app.use(helmet());
 

@@ -15,7 +15,7 @@ const DashboardCard = ({ image, name, path }: dashCardType) => {
         height={200}
         className='bg-cover w-full h-[300px]'
       />
-      <p className='absolute top-0 left-0 right-0 w-full h-full text-netral-1 font-bold text-xl pl-2 bgDash '>
+      <p className='absolute top-0 left-0 right-0 w-full h-full text-netral-1 font-bold text-2xl bgDash p-2.5'>
         {name}
       </p>
     </Link>

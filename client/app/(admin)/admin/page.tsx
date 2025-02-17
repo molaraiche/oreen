@@ -15,7 +15,7 @@ const Admin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/admin/login",
+        "https://oreenapi.molaraiche.com/api/admin/login",
         { email, password }
       );
       const { token } = await response.data;
