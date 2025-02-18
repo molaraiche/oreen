@@ -28,7 +28,7 @@ const Home = () => {
         <Image
           src='/assets/toyota_camary.png'
           alt='TOYOTA'
-          width={853}
+          width={803}
           height={545}
           className='w-full h-auto'
         />
