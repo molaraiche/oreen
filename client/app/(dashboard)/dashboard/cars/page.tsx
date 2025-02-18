@@ -1,5 +1,6 @@
 import { getAllCars } from "@/api/api";
 import { carType } from "@/types/types";
+import Link from "next/link";
 
 const Cars = async () => {
   const cars = await getAllCars();
@@ -11,6 +12,14 @@ const Cars = async () => {
         <p className='font-medium mt-5'>
           Here you can freely manage all disponible cars you have in your agency
         </p>
+      </div>
+
+      <div className='flex items-center justify-end h-[10vh] pr-16'>
+        <Link
+          href='/dashboard/cars/add'
+          className='px-6 py-2 bg-red-6 hover:bg-red-5 text-netral-1 '>
+          Add Car
+        </Link>
       </div>
 
       <div className='min-h-[30vh] flex items-center justify-center w-full'>
@@ -50,13 +59,40 @@ const Cars = async () => {
                   </th>
                   <td className='px-6 py-4'>{car.brand}</td>
                   <td className='px-6 py-4'>{car.model} </td>
+                  <td className='px-6 py-4'>
+                    {car.status === "free" && (
+                      <span className='px-6 py-2.5 bg-gray-400 font-semibold uppercase text-netral-1'>
+                        {car.status}
+                      </span>
+                    )}
+                    {car.status === "pending" && (
+                      <span className='px-6 py-2.5 bg-gray-500 font-semibold uppercase'>
+                        {car.status}
+                      </span>
+                    )}
+                    {car.status === "approved" && (
+                      <span className='px-6 py-2.5 bg-green-500  font-semibold uppercase'>
+                        {car.status}
+                      </span>
+                    )}
+                    {car.status === "rejected" && (
+                      <span className='px-6 py-2.5 bg-red-500  font-semibold uppercase'>
+                        {car.status}
+                      </span>
+                    )}
+                  </td>
                   <td className='px-6 py-4'> ${car.price ? car.price : 100}</td>
                   <td className='px-6 py-4 text-right'>
-                    <a
-                      href='#'
-                      className='font-medium text-blue-600 dark:text-blue-500 hover:underline'>
+                    <Link
+                      href='/dashboard/cars/edit'
+                      className='font-medium  px-6 py-2.5 bg-blue-500 text-netral-1 mr-2'>
                       Edit
-                    </a>
+                    </Link>
+                    <Link
+                      href='/dashboard/cars/edit'
+                      className='font-medium px-6 py-2.5 bg-red-500 text-netral-1 ml-2'>
+                      Delete
+                    </Link>
                   </td>
                 </tr>
               ))}

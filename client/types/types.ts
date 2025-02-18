@@ -62,5 +62,14 @@ export interface carType {
   rate?: number;
   type?: string;
   condition?: string;
-  situation?: string;
+  status?: string;
+}
+export interface formType {
+  type?: string;
+  title?: string;
+  name?: string;
+  label?: string;
+  placeholder?: string;
+  img?: string;
+  id?: string;
 }
