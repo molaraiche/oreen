@@ -1,0 +1,40 @@
+export const partnersList = [
+  { id: 1, name: "BMW", image: "/assets/BMW.png", width: 80, height: 80 },
+  {
+    id: 2,
+    name: "LEXUS",
+    image: "/assets/lexus-logo.png",
+    width: 93,
+    height: 70,
+  },
+  {
+    id: 3,
+    name: "MERCEDES",
+    image: "/assets/Marcedes.png",
+    width: 80,
+    height: 80,
+  },
+  { id: 4, name: "HONDA", image: "/assets/Honda.png", width: 74, height: 60 },
+  {
+    id: 5,
+    name: "HYUNDAI",
+    image: "/assets/Hyundai.png",
+    width: 110,
+    height: 60,
+  },
+  {
+    id: 6,
+    name: "NISSAN",
+    image: "/assets/Nissan.png",
+    width: 69,
+    height: 60,
+  },
+  {
+    id: 7,
+    name: "TOYOTA",
+    image: "/assets/Toyota.png",
+    width: 86,
+    height: 60,
+  },
+  { id: 8, name: "KIA", image: "/assets/KIA.png", width: 99, height: 50 },
+];

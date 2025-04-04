@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.adminbg {
+  background: url("../../public/assets/service-bg.png") no-repeat scroll left/cover;
+
+}
