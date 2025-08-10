@@ -46,4 +46,24 @@ Treat it as if a client’s revenue depended on it.
 
 ## The Outcome  
 - **Performance:** 90+ Lighthouse score on all key metrics  
-- **Reusability:** Easily adaptable for any agency with simple branding
+- **Reusability:** Easily adaptable for any agency with simple branding tweaks  
+- **Quality:** Fast load times, smooth interactions, and a professional UI
+
+---
+
+## Reflection  
+This project pushed me to blend frontend polish with backend functionality. It reinforced how small details—like upload flows and booking confirmations—impact real users.  
+If revisited, I’d add:  
+- Role-based authentication  
+- Advanced search filters  
+- Analytics dashboards
+
+---
+
+## Demo & Links  
+- Live Demo: [https://oreen.molaraiche.com/]  
+- Design Source: [https://www.figma.com/design/Ckk2sa1J1PCpJZPcTjVPG0/Rental-Car-Landing-Page-Web-Design--Community-?node-id=0-1&t=awLTkLO3AablUENM-1]  
+
+---
+
+Feel free to reach out if you want to discuss or contribute!
