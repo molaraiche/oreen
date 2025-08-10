@@ -61,8 +61,8 @@ If revisited, I’d add:
 ---
 
 ## Demo & Links  
-- Live Demo: [https://oreen.molaraiche.com/]  
-- Design Source: [https://www.figma.com/design/Ckk2sa1J1PCpJZPcTjVPG0/Rental-Car-Landing-Page-Web-Design--Community-?node-id=0-1&t=awLTkLO3AablUENM-1]  
+- Live Demo: (https://oreen.molaraiche.com/) 
+- Design Source: (https://www.figma.com/design/Ckk2sa1J1PCpJZPcTjVPG0/Rental-Car-Landing-Page-Web-Design--Community-?node-id=0-1&t=awLTkLO3AablUENM-1)
 
 ---
 
